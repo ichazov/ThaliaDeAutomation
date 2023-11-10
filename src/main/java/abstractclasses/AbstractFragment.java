@@ -9,7 +9,7 @@ import java.util.List;
 
 import static com.codeborne.selenide.Selenide.*;
 
-public class AbstractFragment {
+public abstract class AbstractFragment {
 
     private By rootElement;
 

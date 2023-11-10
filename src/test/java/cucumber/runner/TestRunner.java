@@ -1,11 +1,13 @@
 package cucumber.runner;
 
-import io.cucumber.testng.CucumberOptions;
+import io.cucumber.junit.*;
+import org.junit.runner.*;
 
+@RunWith(Cucumber.class)
 @CucumberOptions(
         plugin = {"pretty", "html:src/target/cucumber-reports"},
         monochrome = true,
-        tags = "@Test",
+        tags = "@CustomerRegistration",
         glue = {"cucumber.steps", "cucumber.hooks"},
         features = "src/test/resources/features"
 )

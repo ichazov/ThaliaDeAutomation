@@ -1,29 +1,31 @@
 package cucumber.hooks;
 
-import driver.SingletonDriver;
-import io.cucumber.java.Scenario;
+import io.cucumber.java.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
 import utilis.ScreenshotHelper;
 
+import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
+
 public class DriverHooks {
+
     Logger logger = LoggerFactory.getLogger(DriverHooks.class);
-    @BeforeTest
+
+    @Before
     public void setUpTest() {
         logger.info("Setting up driver...");
-        SingletonDriver.getWebDriverInstance("chrome");
-        SingletonDriver.getDriver().manage().window().maximize();
+        System.setProperty("selenide.browser", "Chrome");
+        open();
+        getWebDriver().manage().window().maximize();
         logger.info("Driver is ready!");
     }
-    @AfterTest
+
+    @Before
     public void tearDown(Scenario s) {
         logger.info("Taking screenshot after {} scenario execution...", s.getName());
         ScreenshotHelper.takeScreenshot(s);
         logger.info("Done taking screenshot!");
-        logger.info("Quiting driver...");
-        SingletonDriver.quitDriver();
-        logger.info("Done quitting driver!");
+        logger.info("{} scenario execution is finished", s.getName());
     }
 }

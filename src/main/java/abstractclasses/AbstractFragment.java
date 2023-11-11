@@ -1,13 +1,14 @@
 package abstractclasses;
 
 import com.codeborne.selenide.Condition;
-import org.openqa.selenium.By;
+import org.openqa.selenium.*;
 
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
 import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public abstract class AbstractFragment {
 

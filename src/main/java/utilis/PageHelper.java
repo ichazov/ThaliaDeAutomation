@@ -12,6 +12,8 @@ public class PageHelper {
     public PageHelper() {
         pages.put("Registration", new Registration());
         pages.put("My Account", new MyAccount());
+        pages.put("Home", new Home());
+        pages.put("Forgot Password", new ForgotPassword());
     }
 
     public AbstractPage getPageByName(String pageName) {

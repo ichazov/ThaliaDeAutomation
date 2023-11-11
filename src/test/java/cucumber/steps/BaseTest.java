@@ -12,4 +12,10 @@ public class BaseTest {
     RegistrationForm registrationForm = new RegistrationForm();
 
     CustomerInterestsDialog customerInterestsDialog = new CustomerInterestsDialog();
+
+    MyAccountPopUp myAccountPopUp = new MyAccountPopUp();
+
+    HeaderComponent headerComponent = new HeaderComponent();
+
+    ForgotPasswordPage forgotPasswordPage = new ForgotPasswordPage();
 }

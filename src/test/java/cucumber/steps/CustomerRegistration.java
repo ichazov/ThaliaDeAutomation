@@ -16,6 +16,7 @@ public class CustomerRegistration extends BaseTest {
         open(page.getPageUrl());
         cookieConsentDialog.acceptNecessaryCookies();
         assertThat(getWebDriver().getCurrentUrl())
+                .as("Unexpected URL")
                 .matches(page.getPageUrlPattern());
     }
 
@@ -38,6 +39,7 @@ public class CustomerRegistration extends BaseTest {
     public void verifyRedirectedToMyAccountPage(String pageName) {
         AbstractPage page = ph.getPageByName(pageName);
         assertThat(getWebDriver().getCurrentUrl())
+                .as("Unexpected URL")
                 .matches(page.getPageUrlPattern());
     }
 

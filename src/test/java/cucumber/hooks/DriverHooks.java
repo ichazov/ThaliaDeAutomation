@@ -1,5 +1,6 @@
 package cucumber.hooks;
 
+import com.codeborne.selenide.*;
 import io.cucumber.java.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,13 +16,14 @@ public class DriverHooks {
     @Before
     public void setUpTest() {
         logger.info("Setting up driver...");
-        System.setProperty("selenide.browser", "Chrome");
+        Configuration.browser = "Chrome";
+        Configuration.pageLoadStrategy = "eager";
         open();
         getWebDriver().manage().window().maximize();
         logger.info("Driver is ready!");
     }
 
-    @Before
+    @After
     public void tearDown(Scenario s) {
         logger.info("Taking screenshot after {} scenario execution...", s.getName());
         ScreenshotHelper.takeScreenshot(s);

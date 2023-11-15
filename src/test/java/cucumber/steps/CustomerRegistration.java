@@ -2,6 +2,7 @@ package cucumber.steps;
 
 import abstractclasses.*;
 import io.cucumber.java.en.*;
+import org.openqa.selenium.support.ui.*;
 import utilis.*;
 
 import static com.codeborne.selenide.Selenide.open;
@@ -17,7 +18,7 @@ public class CustomerRegistration extends BaseTest {
         cookieConsentDialog.acceptNecessaryCookies();
         assertThat(getWebDriver().getCurrentUrl())
                 .as("Unexpected URL")
-                .matches(page.getPageUrlPattern());
+                .isEqualTo(page.getPageUrl() + "/");
     }
 
     @But("Customer fills in the registration form")
@@ -37,7 +38,10 @@ public class CustomerRegistration extends BaseTest {
 
     @Then("Customer should be redirected to {string} page")
     public void verifyRedirectedToMyAccountPage(String pageName) {
+        //WaitHelper implicitly does the assertion. Not sure if I should keep assertThat(); method.
+        //Let's keep it as is for now.
         AbstractPage page = ph.getPageByName(pageName);
+        WaitHelper.waitForCondition(ExpectedConditions.urlMatches(page.getPageUrlPattern()));
         assertThat(getWebDriver().getCurrentUrl())
                 .as("Unexpected URL")
                 .matches(page.getPageUrlPattern());

@@ -2,19 +2,17 @@ package desktop.fragments;
 
 import abstractclasses.*;
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.*;
-import utilis.*;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class RegistrationForm extends AbstractFragment {
 
-    private static final By ROOT = By.cssSelector("form.js");
+    private static final By ROOT = By.cssSelector("[component='nutzer-registrierung']");
 
     private static final By EMAIL_FIELD = By.name("email");
 
-    private static final By PASSWORD_FIELD = By.name("passwort");
+    private static final By PASSWORD_FIELD = By.cssSelector(".input-passwort");
 
     private static final By BIRTHDAY_DAY_FIELD = By.name("geburtstagTag");
 
@@ -63,9 +61,5 @@ public class RegistrationForm extends AbstractFragment {
 
     public void clickCreateAccountButton() {
         clickButton(CREATE_ACCOUNT_BUTTON);
-        WaitHelper.waitForCondition(
-                10,
-                2,
-                ExpectedConditions.visibilityOf($(By.className("kundeninteressen-overlay"))));
     }
 }

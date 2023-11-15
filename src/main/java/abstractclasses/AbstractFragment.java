@@ -1,14 +1,13 @@
 package abstractclasses;
 
-import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.*;
 import org.openqa.selenium.*;
 
-import java.time.Duration;
+import java.time.*;
 import java.util.ArrayList;
 import java.util.List;
 
 import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public abstract class AbstractFragment {
 
@@ -22,37 +21,32 @@ public abstract class AbstractFragment {
         return rootElement;
     }
 
+    private SelenideElement getInteractableElement(By locator) {
+        return $(getRootElement()).$(locator).shouldBe(Condition.interactable, Duration.ofSeconds(10));
+    }
+
     protected void selectFromDropdown(By locator, String s) {
-        $(locator).selectOptionContainingText(s);
+        getInteractableElement(locator).selectOptionContainingText(s);
     }
 
     protected void clickButton(By locator) {
-        $(locator).shouldBe(Condition.interactable).click();
+        getInteractableElement(locator).click();
     }
 
     protected String getElementText(By locator) {
-        return $(locator).getText();
+        return getInteractableElement(locator).getText();
     }
 
     protected void enterTextIntoField(By locator, String s) {
-        $(locator).sendKeys(s);
-    }
-
-    protected List<String> getListOfErrorMessages(By locator) {
-        return new ArrayList<>($$(locator).texts());
+        getInteractableElement(locator).sendKeys(s);
     }
 
     protected void switchToFrame(By locator) {
-        switchTo().frame($(locator));
+        switchTo().frame(getInteractableElement(locator));
     }
 
     protected void switchToDefaultContent() {
         switchTo().defaultContent();
-    }
-
-    protected void acceptRejectCookieConsent(By locator1, By locator2) {
-        $(locator1).shouldBe(Condition.visible, Duration.ofSeconds(10));
-        clickButton(locator2);
     }
 
     protected List<String> getDisplayedValidationErrors(By locator) {

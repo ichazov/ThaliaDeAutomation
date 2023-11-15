@@ -1,10 +1,17 @@
 package abstractclasses;
 
+import lombok.*;
+
+@Builder
+@AllArgsConstructor
 public class AbstractPage {
 
     private String pageUrl;
 
     private String pageUrlPattern;
+
+    protected AbstractPage() {
+    }
 
     public void setPageUrl(String pageUrl) {
         this.pageUrl = pageUrl;
@@ -14,8 +21,8 @@ public class AbstractPage {
         return pageUrl;
     }
 
-    public String setPageUrlPattern(String pageUrlPattern) {
-        return this.pageUrlPattern = pageUrlPattern;
+    public void setPageUrlPattern(String pageUrlPattern) {
+        this.pageUrlPattern = pageUrlPattern;
     }
 
     public String getPageUrlPattern() {

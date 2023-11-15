@@ -14,6 +14,12 @@ public class PageHelper {
         pages.put("My Account", new MyAccount());
         pages.put("Home", new Home());
         pages.put("Forgot Password", new ForgotPassword());
+        pages.put("Search Results", new SearchResults());
+        pages.put("Product Details", new ProductDetails());
+        pages.put("Login", new Login());
+        pages.put("Billing Address", new BillingAddress());
+        pages.put("Order Review", new OrderReview());
+        pages.put("PayPal", new PayPal());
     }
 
     public AbstractPage getPageByName(String pageName) {

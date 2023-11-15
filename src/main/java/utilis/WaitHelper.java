@@ -11,9 +11,9 @@ public class WaitHelper {
     private WaitHelper() {
     }
 
-    public static <T> void waitForCondition(int timeout, int pollingInterval, ExpectedCondition<T> condition) {
-        Wait().withTimeout(Duration.ofSeconds(timeout))
-                .pollingEvery(Duration.ofSeconds(pollingInterval))
+    public static <T> void waitForCondition(ExpectedCondition<T> condition) {
+        Wait().withTimeout(Duration.ofSeconds(10))
+                .pollingEvery(Duration.ofSeconds(1))
                 .until(condition);
     }
 }

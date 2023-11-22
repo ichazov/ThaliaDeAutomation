@@ -3,9 +3,6 @@ package desktop.fragments;
 import abstractclasses.*;
 import org.openqa.selenium.*;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
-
 public class RegistrationForm extends AbstractFragment {
 
     private static final By ROOT = By.cssSelector("[component='nutzer-registrierung']");
@@ -54,8 +51,7 @@ public class RegistrationForm extends AbstractFragment {
     }
 
     public RegistrationForm markDataPrivacyCheckbox() {
-        JavascriptExecutor jse = (JavascriptExecutor) getWebDriver();
-        jse.executeScript("arguments[0].click();", $(DATA_PRIVACY_AGREEMENT_CHECKBOX));
+        jsClick(DATA_PRIVACY_AGREEMENT_CHECKBOX);
         return this;
     }
 

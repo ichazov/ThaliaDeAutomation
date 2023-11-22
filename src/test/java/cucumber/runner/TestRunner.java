@@ -7,7 +7,7 @@ import org.junit.runner.*;
 @CucumberOptions(
         plugin = {"pretty", "html:src/target/cucumber-reports"},
         monochrome = true,
-        tags = "@GuestUserPurchase",
+        tags = "@SearchResultsFiltering",
         glue = {"cucumber.steps", "cucumber.hooks"},
         features = "src/test/resources/features"
 )

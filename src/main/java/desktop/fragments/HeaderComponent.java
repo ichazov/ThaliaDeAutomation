@@ -43,5 +43,4 @@ public class HeaderComponent extends AbstractFragment {
 
     public String getNumberOfProductsInCart() {
        return $(CART_ICON).getAttribute("count");
-    }
-}
+    }}

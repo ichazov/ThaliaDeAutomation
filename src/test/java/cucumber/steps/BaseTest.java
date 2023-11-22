@@ -19,7 +19,7 @@ public class BaseTest {
 
     ForgotPasswordPage forgotPasswordPage = new ForgotPasswordPage();
 
-    SearchResultsListComponent productListComponent = new SearchResultsListComponent();
+    SearchResultsListComponent searchResultsListComponent = new SearchResultsListComponent();
 
     ProductDetailsPage productDetailsPage = new ProductDetailsPage();
 
@@ -32,4 +32,14 @@ public class BaseTest {
     BillingAddressPage billingAddressPage = new BillingAddressPage();
 
     OrderReviewPage orderReviewPage = new OrderReviewPage();
+
+    CategoryFilterComponent categoryFilterComponent = new CategoryFilterComponent();
+
+    SelectedFiltersComponent selectedFiltersComponent = new SelectedFiltersComponent();
+
+    FiltersPanel filtersPanel = new FiltersPanel();
+
+    AllFiltersContainer allFiltersContainer = new AllFiltersContainer();
+
+    PriceFilterAccordion priceFilterAccordion = new PriceFilterAccordion();
 }

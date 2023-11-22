@@ -4,10 +4,9 @@ import com.codeborne.selenide.*;
 import org.openqa.selenium.*;
 
 import java.time.*;
-import java.util.ArrayList;
-import java.util.List;
 
 import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public abstract class AbstractFragment {
 
@@ -21,8 +20,13 @@ public abstract class AbstractFragment {
         return rootElement;
     }
 
-    private SelenideElement getInteractableElement(By locator) {
+    protected SelenideElement getInteractableElement(By locator) {
         return $(getRootElement()).$(locator).shouldBe(Condition.interactable, Duration.ofSeconds(10));
+    }
+
+    private void executeJsScript(String script, Object... args) {
+        JavascriptExecutor jse = (JavascriptExecutor) getWebDriver();
+        jse.executeScript(script, args);
     }
 
     protected void selectFromDropdown(By locator, String s) {
@@ -49,7 +53,11 @@ public abstract class AbstractFragment {
         switchTo().defaultContent();
     }
 
-    protected List<String> getDisplayedValidationErrors(By locator) {
-        return new ArrayList<>($$(locator).texts());
+    protected Boolean isElementDisplayed(By locator) {
+       return getInteractableElement(locator).isDisplayed();
+    }
+
+    protected void jsClick(By locator) {
+        executeJsScript("arguments[0].click();", $(locator));
     }
 }

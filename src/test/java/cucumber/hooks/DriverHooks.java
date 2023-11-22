@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import utilis.ScreenshotHelper;
 
+import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
@@ -29,5 +30,6 @@ public class DriverHooks {
         ScreenshotHelper.takeScreenshot(s);
         logger.info("Done taking screenshot!");
         logger.info("{} scenario execution is finished", s.getName());
+        closeWebDriver();
     }
 }

@@ -29,12 +29,6 @@ public class CartPage extends AbstractFragment {
                 .collect(Collectors.toList());
     }
 
-    public ProductItemInCart getProductFromList(int index) {
-        //Ideally we should use product's SKU for this.
-        //For now selecting a product by index would do.
-        return getListOfProducts().get(index);
-    }
-
     public void clickCheckoutButton() {
         clickButton(CHECKOUT_BUTTON);
     }

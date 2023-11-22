@@ -3,8 +3,6 @@ package desktop.fragments;
 import abstractclasses.*;
 import org.openqa.selenium.*;
 
-import static com.codeborne.selenide.Selenide.$;
-
 public class ForgotPasswordPage extends AbstractFragment {
 
     private static final By ROOT = By.cssSelector("[component=passwort-vergessen]");
@@ -28,6 +26,6 @@ public class ForgotPasswordPage extends AbstractFragment {
     }
 
     public boolean isSuccessMessageDisplayed() {
-        return !$(SUCCESS_MESSAGE).getText().isEmpty();
+        return !getElementText(SUCCESS_MESSAGE).isEmpty();
     }
 }

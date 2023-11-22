@@ -3,8 +3,6 @@ package desktop.fragments;
 import abstractclasses.*;
 import org.openqa.selenium.*;
 
-import static com.codeborne.selenide.Selenide.$;
-
 public class MyAccountPopUp extends AbstractFragment {
 
     private static final By ROOT = By.cssSelector("[component='login-form-kompakt']");
@@ -42,6 +40,6 @@ public class MyAccountPopUp extends AbstractFragment {
     }
 
     public boolean isInvalidCredentialsErrorDisplayed() {
-        return $(INVALID_CREDENTIALS_ERROR_MESSAGE).getText().isEmpty();
+       return getElementText(INVALID_CREDENTIALS_ERROR_MESSAGE).isEmpty();
     }
 }

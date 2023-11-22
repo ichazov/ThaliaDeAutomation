@@ -1,10 +1,7 @@
 package desktop.fragments;
 
 import abstractclasses.*;
-import com.codeborne.selenide.*;
 import org.openqa.selenium.*;
-
-import static com.codeborne.selenide.Selenide.$;
 
 public class RelatedProductsContainer extends AbstractFragment {
 
@@ -23,6 +20,6 @@ public class RelatedProductsContainer extends AbstractFragment {
     }
 
     public Boolean isDisplayed() {
-        return $(CLOSE_BUTTON).shouldBe(Condition.visible).isDisplayed();
+        return isElementDisplayed(CLOSE_BUTTON);
     }
 }

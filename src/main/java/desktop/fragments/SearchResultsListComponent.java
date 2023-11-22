@@ -24,13 +24,10 @@ public class SearchResultsListComponent extends AbstractFragment {
                 .map(e -> ProductItemInSearchResultsList.builder()
                         .productPageLink(e.find(ProductItemInSearchResultsList.getPRODUCT_LINK_LOCATOR()))
                         .title(e.find(ProductItemInSearchResultsList.getTITLE_LOCATOR()).getText())
+                        .productFormat(e.find(ProductItemInSearchResultsList.getPRODUCT_FORMAT_LOCATOR()).getText())
+                        .productPrice(e.find(ProductItemInSearchResultsList.getPRODUCT_PRICE_LOCATOR())
+                                .attr("price"))
                         .build())
                 .collect(Collectors.toList());
-    }
-
-    public ProductItemInSearchResultsList getProductFromList(int index) {
-        //Ideally we should use product's SKU for this.
-        //For now selecting a product by index would do.
-        return getListOfProducts().get(index);
     }
 }

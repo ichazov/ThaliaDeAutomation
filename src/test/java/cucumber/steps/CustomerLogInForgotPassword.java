@@ -36,7 +36,7 @@ public class CustomerLogInForgotPassword extends BaseTest {
     @Then("Customer should see Success message")
     public void verifySuccessMessageDisplayed() {
         AssertionsForClassTypes.assertThat(forgotPasswordPage.isSuccessMessageDisplayed())
-                .as("Success isn't displayed")
+                .as("Success message isn't displayed")
                 .isTrue();
     }
 }

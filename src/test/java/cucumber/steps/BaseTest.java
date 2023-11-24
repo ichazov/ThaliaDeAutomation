@@ -11,8 +11,6 @@ public class BaseTest {
 
     RegistrationForm registrationForm = new RegistrationForm();
 
-    CustomerInterestsContainer customerInterestsDialog = new CustomerInterestsContainer();
-
     MyAccountPopUp myAccountPopUp = new MyAccountPopUp();
 
     HeaderComponent headerComponent = new HeaderComponent();
@@ -22,8 +20,6 @@ public class BaseTest {
     SearchResultsListComponent searchResultsListComponent = new SearchResultsListComponent();
 
     ProductDetailsPage productDetailsPage = new ProductDetailsPage();
-
-    RelatedProductsContainer relatedProductsContainer = new RelatedProductsContainer();
 
     CartPage cartPage = new CartPage();
 
@@ -39,7 +35,7 @@ public class BaseTest {
 
     FiltersPanel filtersPanel = new FiltersPanel();
 
-    AllFiltersContainer allFiltersContainer = new AllFiltersContainer();
-
     PriceFilterAccordion priceFilterAccordion = new PriceFilterAccordion();
+
+    SlideInPanel slideInPanel = new SlideInPanel();
 }

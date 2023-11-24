@@ -12,8 +12,9 @@ public class FilteringByPriceRange extends BaseTest {
     public void setPriceRange(int priceFrom, int priceTo) {
         filtersPanel.openPriceFilter();
         priceFilterAccordion.enterPriceFrom(String.valueOf(priceFrom))
-                .enterPriceTo(String.valueOf(priceTo));
-        allFiltersContainer.clickApplyFiltersButton();
+                .enterPriceTo(String.valueOf(priceTo))
+                .clickPrimaryButton();
+
         assertThat(selectedFiltersComponent.isPriceRangeLabelDisplayed())
                 .as("Price range label is not displayed")
                 .isTrue();
@@ -23,6 +24,7 @@ public class FilteringByPriceRange extends BaseTest {
     public void verifyListOfProducts(int minPrice, int maxPrice) {
         BigDecimal min = new BigDecimal(minPrice);
         BigDecimal max = new BigDecimal(maxPrice);
+
         assertThat(searchResultsListComponent.getListOfProducts())
                 .as("List contains products with prices outside the specified price range")
                 .isNotEmpty()

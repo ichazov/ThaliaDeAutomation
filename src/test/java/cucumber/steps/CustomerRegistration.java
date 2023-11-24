@@ -49,6 +49,6 @@ public class CustomerRegistration extends BaseTest {
 
     @But("Customer Interests dialog is displayed")
     public void closeCustomerInterestsDialog() {
-        customerInterestsDialog.clickCloseButtonOne();
+        slideInPanel.clickSecondaryButton();
     }
 }

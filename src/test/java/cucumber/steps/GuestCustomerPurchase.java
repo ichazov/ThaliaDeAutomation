@@ -52,14 +52,14 @@ public class GuestCustomerPurchase extends BaseTest {
     @But("Product is successfully added to cart")
     public void verifyProductAddedToCart() {
         SoftAssertions softly = new SoftAssertions();
-        softly.assertThat(relatedProductsContainer.isDisplayed())
+        softly.assertThat(slideInPanel.isDisplayed())
                 .as("Related Products container isn't displayed")
                 .isTrue();
         softly.assertThat(headerComponent.getNumberOfProductsInCart())
                 .as("Unexpected number of products in cart")
                 .isEqualTo("1");
 
-        relatedProductsContainer.clickOpenCartButton();
+        slideInPanel.clickPrimaryButton();
 
         softly.assertThat(cartPage.getListOfProducts())
                 .as("Unexpected number of products in cart")

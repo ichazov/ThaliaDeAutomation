@@ -9,7 +9,7 @@ import java.util.*;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.actions;
 
-public class PriceFilterAccordion extends AllFiltersContainer {
+public class PriceFilterAccordion extends SlideInPanel {
 
     private static final By ROOT = By.cssSelector("[data-overlay-gruppe='Preis']");
 
@@ -20,7 +20,7 @@ public class PriceFilterAccordion extends AllFiltersContainer {
     private static final By LOAD_SPINNER = By.className("thalia-ladespinner");
 
     public PriceFilterAccordion() {
-        super(ROOT);
+        new SlideInPanel(ROOT);
     }
 
     private void setPriceValue(By locator, String s) {
@@ -40,7 +40,6 @@ public class PriceFilterAccordion extends AllFiltersContainer {
     public PriceFilterAccordion enterPriceFrom(String priceFrom) {
         setPriceValue(MIN_PRICE_FIELD, priceFrom);
         return this;
-
     }
 
     public PriceFilterAccordion enterPriceTo(String priceTo) {

@@ -5,7 +5,7 @@ import org.openqa.selenium.*;
 
 @Builder
 @RequiredArgsConstructor
-public class ProductItemInCart {
+public class ProductInCart {
 
     @Getter
     private static final By PRODUCT_TITLE_AND_LINK_LOCATOR = By.className("artikel-titel");

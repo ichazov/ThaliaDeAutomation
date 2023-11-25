@@ -33,7 +33,7 @@ public class GuestCustomerPurchase extends BaseTest {
 
     @But("Search results list contains products that correspond to the search term")
     public void verifyListOfSearchResults() {
-        List<ProductItemInSearchResultsList> products = searchResultsListComponent.getListOfProducts();
+        List<ProductInSearchResults> products = searchResultsList.getListOfProducts();
         assertThat(products)
                 .as("No products matching the search term found")
                 .anyMatch(p -> Objects.equals(p.getTitle(), "1984"));
@@ -41,7 +41,7 @@ public class GuestCustomerPurchase extends BaseTest {
 
     @When("Customer opens desired product's page")
     public void opensProductPage() {
-        searchResultsListComponent.getListOfProducts().get(0).openProductPage();
+        searchResultsList.getListOfProducts().get(0).openProductPage();
     }
 
     @When("Customer adds product to the shopping cart")
@@ -52,14 +52,14 @@ public class GuestCustomerPurchase extends BaseTest {
     @But("Product is successfully added to cart")
     public void verifyProductAddedToCart() {
         SoftAssertions softly = new SoftAssertions();
-        softly.assertThat(relatedProductsContainer.isDisplayed())
+        softly.assertThat(slideInPanel.isDisplayed())
                 .as("Related Products container isn't displayed")
                 .isTrue();
         softly.assertThat(headerComponent.getNumberOfProductsInCart())
                 .as("Unexpected number of products in cart")
                 .isEqualTo("1");
 
-        relatedProductsContainer.clickOpenCartButton();
+        slideInPanel.clickPrimaryButton();
 
         softly.assertThat(cartPage.getListOfProducts())
                 .as("Unexpected number of products in cart")

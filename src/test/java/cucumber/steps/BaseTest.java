@@ -11,19 +11,15 @@ public class BaseTest {
 
     RegistrationForm registrationForm = new RegistrationForm();
 
-    CustomerInterestsContainer customerInterestsDialog = new CustomerInterestsContainer();
-
     MyAccountPopUp myAccountPopUp = new MyAccountPopUp();
 
     HeaderComponent headerComponent = new HeaderComponent();
 
     ForgotPasswordPage forgotPasswordPage = new ForgotPasswordPage();
 
-    SearchResultsListComponent searchResultsListComponent = new SearchResultsListComponent();
+    SearchResultsList searchResultsList = new SearchResultsList();
 
     ProductDetailsPage productDetailsPage = new ProductDetailsPage();
-
-    RelatedProductsContainer relatedProductsContainer = new RelatedProductsContainer();
 
     CartPage cartPage = new CartPage();
 
@@ -35,11 +31,11 @@ public class BaseTest {
 
     CategoryFilterComponent categoryFilterComponent = new CategoryFilterComponent();
 
-    SelectedFiltersComponent selectedFiltersComponent = new SelectedFiltersComponent();
+    SelectedFiltersPanel selectedFiltersPanel = new SelectedFiltersPanel();
 
     FiltersPanel filtersPanel = new FiltersPanel();
 
-    AllFiltersContainer allFiltersContainer = new AllFiltersContainer();
-
     PriceFilterAccordion priceFilterAccordion = new PriceFilterAccordion();
+
+    SlideInPanel slideInPanel = new SlideInPanel();
 }

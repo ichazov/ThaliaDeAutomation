@@ -21,10 +21,10 @@ public class CartPage extends AbstractFragment {
         setRootElement(ROOT);
     }
 
-    public List<ProductItemInCart> getListOfProducts() {
+    public List<ProductInCart> getListOfProducts() {
         return new ArrayList<>($$(PRODUCT)).stream()
-                .map(e -> ProductItemInCart.builder()
-                        .title(e.find(ProductItemInCart.getPRODUCT_TITLE_AND_LINK_LOCATOR()).getText())
+                .map(e -> ProductInCart.builder()
+                        .title(e.find(ProductInCart.getPRODUCT_TITLE_AND_LINK_LOCATOR()).getText())
                         .build())
                 .collect(Collectors.toList());
     }

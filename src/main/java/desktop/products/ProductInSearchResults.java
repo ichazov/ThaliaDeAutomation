@@ -8,7 +8,7 @@ import java.math.*;
 
 @Builder
 @RequiredArgsConstructor
-public class ProductItemInSearchResultsList {
+public class ProductInSearchResults {
 
     @Getter
     private static final By PRODUCT_LINK_LOCATOR = By.className("tm-produkt-link");

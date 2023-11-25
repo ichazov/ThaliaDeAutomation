@@ -3,7 +3,7 @@ package desktop.fragments;
 import abstractclasses.*;
 import org.openqa.selenium.*;
 
-public class SelectedFiltersComponent extends AbstractFragment {
+public class SelectedFiltersPanel extends AbstractFragment {
 
     private static final By ROOT = By.className("aktivierte-filter");
 
@@ -13,7 +13,7 @@ public class SelectedFiltersComponent extends AbstractFragment {
 
     private static final By PRICE_RANGE_LABEL = By.name("filterPREISSLIDER");
 
-    public SelectedFiltersComponent() {
+    public SelectedFiltersPanel() {
         setRootElement(ROOT);
     }
 

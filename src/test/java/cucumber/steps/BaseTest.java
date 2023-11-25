@@ -17,7 +17,7 @@ public class BaseTest {
 
     ForgotPasswordPage forgotPasswordPage = new ForgotPasswordPage();
 
-    SearchResultsListComponent searchResultsListComponent = new SearchResultsListComponent();
+    SearchResultsList searchResultsList = new SearchResultsList();
 
     ProductDetailsPage productDetailsPage = new ProductDetailsPage();
 
@@ -31,7 +31,7 @@ public class BaseTest {
 
     CategoryFilterComponent categoryFilterComponent = new CategoryFilterComponent();
 
-    SelectedFiltersComponent selectedFiltersComponent = new SelectedFiltersComponent();
+    SelectedFiltersPanel selectedFiltersPanel = new SelectedFiltersPanel();
 
     FiltersPanel filtersPanel = new FiltersPanel();
 

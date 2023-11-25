@@ -15,7 +15,7 @@ public class FilteringByPriceRange extends BaseTest {
                 .enterPriceTo(String.valueOf(priceTo))
                 .clickPrimaryButton();
 
-        assertThat(selectedFiltersComponent.isPriceRangeLabelDisplayed())
+        assertThat(selectedFiltersPanel.isPriceRangeLabelDisplayed())
                 .as("Price range label is not displayed")
                 .isTrue();
     }
@@ -25,7 +25,7 @@ public class FilteringByPriceRange extends BaseTest {
         BigDecimal min = new BigDecimal(minPrice);
         BigDecimal max = new BigDecimal(maxPrice);
 
-        assertThat(searchResultsListComponent.getListOfProducts())
+        assertThat(searchResultsList.getListOfProducts())
                 .as("List contains products with prices outside the specified price range")
                 .isNotEmpty()
                 .allMatch(p -> p.getProductPrice().compareTo(min) >= 0 && p.getProductPrice().compareTo(max) <= 0);

@@ -14,7 +14,7 @@ public class FilteringByProductPriceAndFormat extends BaseTest {
     @When("Customer selects the eBooks category")
     public void selectCategory() {
         categoryFilterComponent.selectEbooksFilter();
-        assertThat(selectedFiltersComponent.isEbooksCategoryLabelDisplayed())
+        assertThat(selectedFiltersPanel.isEbooksCategoryLabelDisplayed())
                 .as("eBook category label is not displayed")
                 .isTrue();
     }
@@ -24,7 +24,7 @@ public class FilteringByProductPriceAndFormat extends BaseTest {
         BigDecimal min = new BigDecimal(minPrice);
         BigDecimal max = new BigDecimal(maxPrice);
         SoftAssertions softly = new SoftAssertions();
-        List<ProductItemInSearchResultsList> products = searchResultsListComponent.getListOfProducts();
+        List<ProductInSearchResults> products = searchResultsList.getListOfProducts();
 
         softly.assertThat(products)
                 .as("List contains products with prices outside the specified price range")

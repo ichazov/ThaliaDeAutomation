@@ -22,10 +22,6 @@ public class SlideInPanel extends AbstractFragment {
         setRootElement(new ByChained(ROOT, root));
     }
 
-    public void clickCloseButton() {
-        clickButton(CLOSE_BUTTON);
-    }
-
     public void clickPrimaryButton() {
         clickButton(PRIMARY_BUTTON);
     }

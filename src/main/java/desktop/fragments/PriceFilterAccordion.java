@@ -1,8 +1,9 @@
 package desktop.fragments;
 
+import com.codeborne.selenide.*;
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.*;
-import utilis.*;
+
+import java.time.*;
 
 import static com.codeborne.selenide.Selenide.*;
 
@@ -21,27 +22,13 @@ public class PriceFilterAccordion extends SlideInPanel {
     }
 
     private void setPriceValue(By locator, String s) {
-        int maxRetries = 9;
-        int retry = 0;
-
-        while (!s.equals($(locator).getValue())) {
-            retry++;
-            actions().click(getInteractableElement(locator))
-                    .sendKeys(Keys.chord(Keys.BACK_SPACE, Keys.BACK_SPACE, Keys.BACK_SPACE, Keys.BACK_SPACE))
-                    .sendKeys(s)
-                    .sendKeys(Keys.chord(Keys.ENTER))
-                    .perform();
-
-            WaitHelper.waitForCondition(ExpectedConditions.invisibilityOf($(LOAD_SPINNER)));
-            if (maxRetries == retry) {
-                break;
-            }
-        }
+        getInteractableElement(locator).press(Keys.chord(Keys.CONTROL, "a")).append(s);
+        $(LOAD_SPINNER).shouldBe(Condition.visible, Duration.ofSeconds(5))
+                .shouldBe(Condition.disappear, Duration.ofSeconds(5));
     }
 
     public PriceFilterAccordion enterPriceFrom(String priceFrom) {
-        getInteractableElement(MIN_PRICE_FIELD).setValue(priceFrom);
-        WaitHelper.waitForCondition(ExpectedConditions.invisibilityOf($(LOAD_SPINNER)));
+        setPriceValue(MIN_PRICE_FIELD, priceFrom);
         return this;
     }
 

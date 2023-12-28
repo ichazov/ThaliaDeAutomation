@@ -6,7 +6,6 @@ import org.openqa.selenium.*;
 import java.time.*;
 
 import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public abstract class AbstractFragment {
 
@@ -22,11 +21,6 @@ public abstract class AbstractFragment {
 
     protected SelenideElement getInteractableElement(By locator) {
         return $(getRootElement()).$(locator).shouldBe(Condition.interactable, Duration.ofSeconds(10));
-    }
-
-    private void executeJsScript(String script, Object... args) {
-        JavascriptExecutor jse = (JavascriptExecutor) getWebDriver();
-        jse.executeScript(script, args);
     }
 
     protected void selectFromDropdown(By locator, String s) {
@@ -58,6 +52,6 @@ public abstract class AbstractFragment {
     }
 
     protected void jsClick(By locator) {
-        executeJsScript("arguments[0].click();", $(locator));
+        Selenide.executeJavaScript("arguments[0].click();", $(locator));
     }
 }

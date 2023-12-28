@@ -1,0 +1,57 @@
+plugins {
+    id 'java'
+    id 'io.freefair.lombok' version '5.3.0'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'io.github.bonigarcia:webdrivermanager:5.3.2'
+    implementation 'com.codeborne:selenide:6.19.1'
+    implementation 'io.cucumber:cucumber-java:7.14.0'
+    implementation 'org.apache.commons:commons-lang3:3.13.0'
+    implementation 'org.apache.maven.plugins:maven-surefire-plugin:3.2.1'
+    implementation 'org.apache.logging.log4j:log4j-core:2.20.0'
+    implementation 'org.apache.logging.log4j:log4j-api:2.20.0'
+    implementation 'org.apache.logging.log4j:log4j-slf4j2-impl:2.20.0'
+    implementation 'org.projectlombok:lombok:1.18.26'
+
+    testImplementation 'org.assertj:assertj-core:3.24.2'
+    testImplementation 'io.cucumber:cucumber-junit:7.14.0'
+    testImplementation 'junit:junit:4.13.2'
+}
+
+configurations {
+    cucumberRuntime {
+        extendsFrom testImplementation
+    }
+}
+
+def configureTestTask(taskName, tags, threads) {
+    task(taskName, type: Test) {
+        ignoreFailures = true
+        outputs.upToDateWhen { false }
+
+        dependsOn assemble, testClasses
+        doLast {
+            javaexec {
+                getMainClass().set("io.cucumber.core.cli.Main")
+                classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+                args = [
+                        '--plugin', 'pretty',
+                        '--plugin', 'html:src/target/cucumber-reports',
+                        '--glue', 'cucumber', 'src/test/resources/features',
+                        '--tags', tags,
+                        '--threads', threads,
+                ]
+            }
+        }
+    }
+}
+
+configureTestTask('filteringTests', '@SearchResultsFiltering', 1)
+configureTestTask('customerLoginTests', '@CustomerLogin', 1)
+configureTestTask('customerRegistrationTest', '@CustomerRegistration', 1)
+configureTestTask('customerPurchaseTest', '@GuestUserPurchase', 1)

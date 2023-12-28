@@ -19,7 +19,7 @@ public class FilteringByProductPriceAndFormat extends BaseTest {
                 .isTrue();
     }
 
-    @Then("Customer should see list of eBooks that fall within the €{int} to €{int} price range")
+    @Then("Customer should see list of eBooks that fall within the {int} to {int} euros price range")
     public void verifyListOfProduct(int minPrice, int maxPrice) {
         BigDecimal min = new BigDecimal(minPrice);
         BigDecimal max = new BigDecimal(maxPrice);

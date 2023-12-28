@@ -4,10 +4,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.*;
 import utilis.*;
 
-import java.util.*;
-
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.actions;
+import static com.codeborne.selenide.Selenide.*;
 
 public class PriceFilterAccordion extends SlideInPanel {
 
@@ -24,21 +21,27 @@ public class PriceFilterAccordion extends SlideInPanel {
     }
 
     private void setPriceValue(By locator, String s) {
-        actions().click(getInteractableElement(locator))
-                .sendKeys(Keys.chord(Keys.BACK_SPACE, Keys.BACK_SPACE, Keys.BACK_SPACE, Keys.BACK_SPACE))
-                .sendKeys(s)
-                .sendKeys(Keys.chord(Keys.ENTER))
-                .perform();
+        int maxRetries = 9;
+        int retry = 0;
 
-        WaitHelper.waitForCondition(ExpectedConditions.invisibilityOf($(LOAD_SPINNER)));
+        while (!s.equals($(locator).getValue())) {
+            retry++;
+            actions().click(getInteractableElement(locator))
+                    .sendKeys(Keys.chord(Keys.BACK_SPACE, Keys.BACK_SPACE, Keys.BACK_SPACE, Keys.BACK_SPACE))
+                    .sendKeys(s)
+                    .sendKeys(Keys.chord(Keys.ENTER))
+                    .perform();
 
-        if (!Objects.equals($(locator).getValue(), s)) {
-            setPriceValue(locator, s);
+            WaitHelper.waitForCondition(ExpectedConditions.invisibilityOf($(LOAD_SPINNER)));
+            if (maxRetries == retry) {
+                break;
+            }
         }
     }
 
     public PriceFilterAccordion enterPriceFrom(String priceFrom) {
-        setPriceValue(MIN_PRICE_FIELD, priceFrom);
+        getInteractableElement(MIN_PRICE_FIELD).setValue(priceFrom);
+        WaitHelper.waitForCondition(ExpectedConditions.invisibilityOf($(LOAD_SPINNER)));
         return this;
     }
 

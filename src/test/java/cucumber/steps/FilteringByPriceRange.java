@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class FilteringByPriceRange extends BaseTest {
 
-    @When("Customer sets the price range from €{int} to €{int}")
+    @When("Customer sets the price range from {int} to {int} euros")
     public void setPriceRange(int priceFrom, int priceTo) {
         filtersPanel.openPriceFilter();
         priceFilterAccordion.enterPriceFrom(String.valueOf(priceFrom))
@@ -20,7 +20,7 @@ public class FilteringByPriceRange extends BaseTest {
                 .isTrue();
     }
 
-    @Then("Customer should see list of products that fall within the €{int} to €{int} price range")
+    @Then("Customer should see list of products that fall within the {int} to {int} euros price range")
     public void verifyListOfProducts(int minPrice, int maxPrice) {
         BigDecimal min = new BigDecimal(minPrice);
         BigDecimal max = new BigDecimal(maxPrice);

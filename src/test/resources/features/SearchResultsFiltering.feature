@@ -14,10 +14,10 @@ Feature: Search Results Filtering
     Then Customer should see list of products of selected category
 
   Scenario: Filtering products by price range
-    When Customer sets the price range from €5 to €10
-    Then Customer should see list of products that fall within the €5 to €10 price range
+    When Customer sets the price range from 5 to 10 euros
+    Then Customer should see list of products that fall within the 5 to 10 euros price range
 
   Scenario: Filtering products by category and price range
     When Customer selects the eBooks category
-    And Customer sets the price range from €10 to €20
-    Then Customer should see list of eBooks that fall within the €10 to €20 price range
+    And Customer sets the price range from 10 to 20 euros
+    Then Customer should see list of eBooks that fall within the 10 to 20 euros price range

@@ -1,10 +1,12 @@
 package desktop.fragments;
 
 import abstractclasses.*;
+import com.codeborne.selenide.*;
 import org.openqa.selenium.*;
 
+import java.time.*;
+
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 public class HeaderComponent extends AbstractFragment {
 
@@ -36,11 +38,13 @@ public class HeaderComponent extends AbstractFragment {
     }
 
     public Boolean isLoggedIn() {
-        JavascriptExecutor jse = (JavascriptExecutor) getWebDriver();
-        return jse.executeScript("return document.readyState").equals("complete") &&
-                "eingeloggt".equals($(MY_ACCOUNT_ICON).getAttribute("status"));
+        return $(MY_ACCOUNT_ICON)
+                .shouldHave(
+                        Condition.attribute("status", "eingeloggt"), Duration.ofSeconds(5))
+                .has(Condition.attribute("status", "eingeloggt"));
     }
 
     public String getNumberOfProductsInCart() {
-       return $(CART_ICON).getAttribute("count");
-    }}
+        return $(CART_ICON).getAttribute("count");
+    }
+}
